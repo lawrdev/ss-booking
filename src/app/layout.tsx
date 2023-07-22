@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "For front-end test",
 };
 
-export const opensans = Open_Sans({
+const opensans = Open_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
   style: ["normal", "italic"],
   subsets: ["latin"],
