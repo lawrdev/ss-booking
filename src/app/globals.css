@@ -67,3 +67,9 @@ a {
   scrollbar-color: rgba(46, 54, 69, 0.3) #f6f6f6;
   scrollbar-width: thin;
 }
+
+select,
+textarea,
+input {
+  font-size: 16px !important;
+}
