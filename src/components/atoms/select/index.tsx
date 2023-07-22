@@ -1,4 +1,4 @@
-import Select, { StylesConfig } from "react-select";
+import Select, { StylesConfig, components } from "react-select";
 import { useId } from "react";
 import { SelectOptionsType } from "@/helpers/types";
 import {
@@ -19,6 +19,7 @@ export function CustomSelect({
   formErrorMessage,
   label,
   labelProps,
+  dataCy,
 }: {
   options: SelectOptionsType[];
   onChange: (value: any) => void;
@@ -28,6 +29,7 @@ export function CustomSelect({
   formErrorMessage?: string;
   label?: string;
   labelProps?: FormLabelProps;
+  dataCy?: string;
 }) {
   const customStyles: StylesConfig<SelectOptionsType, IsMulti> = {
     option: (defaultStyles, state) => ({
@@ -78,6 +80,10 @@ export function CustomSelect({
     }),
   };
 
+  const Input = (props: any) => {
+    return <components.Input data-cy={dataCy} {...props} />;
+  };
+
   return (
     <FormControl {...formControlProps}>
       {label ? (
@@ -87,6 +93,8 @@ export function CustomSelect({
       ) : null}
 
       <Select
+        components={{ Input }}
+        classNamePrefix={"react-select"}
         placeholder={placeholder ? placeholder : "Select *"}
         defaultValue={defaultValue}
         options={options}

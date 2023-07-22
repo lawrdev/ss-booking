@@ -332,6 +332,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
               gap={{ base: 3, md: 6 }}
             >
               <CustomInput
+                dataCy="pickup-input-name"
                 inputProps={{
                   type: "text",
                   placeholder: "FULL NAME *",
@@ -365,6 +366,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
               gap={{ base: 3, md: 6 }}
             >
               <CustomInput
+                dataCy="pickup-input-phone"
                 inputProps={{
                   type: "tel",
                   placeholder: "PHONE NUMBER *",
@@ -414,6 +416,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             >
               <Box w={"full"}>
                 <CustomSelect
+                  dataCy="pickup-select-state"
                   label="State *"
                   options={statesOps}
                   placeholder="Lagos state"
@@ -428,6 +431,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
 
               <Box w={"full"}>
                 <CustomSelect
+                  dataCy="pickup-select-area"
                   label="Area/Landmark *"
                   placeholder="Eg: Surulere"
                   options={
@@ -453,6 +457,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             >
               <Box w={"full"}>
                 <CustomInput
+                  dataCy="pickup-input-address"
                   label="Street address *"
                   inputProps={{
                     type: "text",
@@ -470,6 +475,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
 
               <Box w={"full"}>
                 <CustomInput
+                  dataCy="pickup-input-date"
                   label="Pickup Date *"
                   inputProps={{
                     type: "date",
@@ -522,7 +528,13 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
           </Box>
 
           <HStack w={"full"} justifyContent={"center"}>
-            <Button w={"full"} size={"md"} type={"submit"} isLoading={isSaving}>
+            <Button
+              data-cy="pickup-btn-continue"
+              w={"full"}
+              size={"md"}
+              type={"submit"}
+              isLoading={isSaving}
+            >
               Continue to delivery
             </Button>
           </HStack>
@@ -565,6 +577,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                   className="thinSB"
                 >
                   <VStack
+                    data-cy="delivery-list"
                     w={"full"}
                     h={"full"}
                     justifyContent={
@@ -576,6 +589,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                         {savedLocations.map((op, index) => (
                           <HStack
                             key={index}
+                            data-cy={`saved-location`}
                             w={"full"}
                             pl={4}
                             pr={2}
@@ -588,10 +602,15 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                             position={"relative"}
                           >
                             <Checkbox
+                              data-cy={`saved-location-checkbox`}
                               borderRadius={"full"}
                               w={"full"}
                               colorScheme="purple"
                               gap={2}
+                              isChecked={
+                                checkedDLs.length > 0 &&
+                                !!checkedDLs.find((x) => x.id === op.id)
+                              }
                               onChange={(e) => {
                                 if (e.target.checked) {
                                   setCheckedDLs([...checkedDLs, op]);
@@ -618,6 +637,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                                   Send to
                                 </Text>
                                 <Text
+                                  data-cy={`saved-location-name`}
                                   noOfLines={1}
                                   fontSize={"sm"}
                                   fontWeight={600}
@@ -647,6 +667,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                         />
                         <HStack mt={1} w={"full"} justifyContent={"center"}>
                           <Button
+                            data-cy="modal-btn-add-delivery"
                             variant={"ghost"}
                             fontWeight={600}
                             leftIcon={<BsHouseAddFill fontSize={"1.2rem"} />}
@@ -674,6 +695,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
 
                         <HStack w={"full"} justifyContent={"center"}>
                           <Button
+                            data-cy="modal-btn-add-delivery"
                             variant={"ghost"}
                             fontWeight={600}
                             leftIcon={<BsHouseAddFill fontSize={"1.2rem"} />}
@@ -721,6 +743,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             </Button>
 
             <Button
+              data-cy={`delivery-btn-book-now`}
               w={"full"}
               maxWidth={"550px"}
               size={"md"}
@@ -798,6 +821,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                 gap={{ base: 3, md: 6 }}
               >
                 <CustomInput
+                  dataCy={`delivery-input-name`}
                   inputProps={{
                     type: "text",
                     placeholder: "FULL NAME *",
@@ -833,6 +857,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                 gap={{ base: 3, md: 6 }}
               >
                 <CustomInput
+                  dataCy={`delivery-input-phone`}
                   inputProps={{
                     type: "tel",
                     placeholder: "PHONE NUMBER *",
@@ -872,6 +897,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             >
               <Box w={"full"}>
                 <CustomSelect
+                  dataCy={`delivery-input-state`}
                   label="State *"
                   options={statesOps}
                   placeholder="Lagos state"
@@ -890,6 +916,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
 
               <Box w={"full"}>
                 <CustomSelect
+                  dataCy={`delivery-input-area`}
                   label="Area/Landmark *"
                   options={
                     areaOps?.find((x) => x.area === deliveryData.state)
@@ -921,6 +948,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             >
               <Box w={"full"}>
                 <CustomInput
+                  dataCy={`delivery-input-address`}
                   label="Street address *"
                   inputProps={{
                     type: "text",
@@ -975,6 +1003,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
                 </Button>
               ) : null}
               <Button
+                data-cy={`delivery-btn-save`}
                 w={"full"}
                 maxWidth={"550px"}
                 size={"md"}
@@ -1108,6 +1137,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             </VStack>
 
             <Button
+              data-cy={`btn-confirm-booking`}
               py={5}
               w={"full"}
               isLoading={isBooking}

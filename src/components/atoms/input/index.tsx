@@ -17,12 +17,14 @@ export const CustomInput = ({
   formErrorMessage,
   label,
   labelProps,
+  dataCy,
 }: {
   inputProps: InputProps;
   formControlProps?: FormControlProps;
   formErrorMessage?: string;
   label?: string;
   labelProps?: FormLabelProps;
+  dataCy?: string;
 }) => {
   return (
     <FormControl {...formControlProps}>
@@ -33,6 +35,7 @@ export const CustomInput = ({
       ) : null}
 
       <Input
+        data-cy={dataCy}
         size={"lg"}
         focusBorderColor={"purple.300"}
         borderRadius={"lg"}
@@ -60,12 +63,14 @@ export const CustomTextarena = ({
   formErrorMessage,
   label,
   labelProps,
+  dataCy,
 }: {
   textareaProps: TextareaProps;
   formControlProps?: FormControlProps;
   formErrorMessage?: string;
   label?: string;
   labelProps?: FormLabelProps;
+  dataCy?: string;
 }) => {
   return (
     <FormControl {...formControlProps}>
@@ -76,6 +81,7 @@ export const CustomTextarena = ({
       ) : null}
 
       <Textarea
+        data-cy={dataCy}
         size={"lg"}
         focusBorderColor={"purple.300"}
         borderRadius={"lg"}

@@ -1,3 +1,4 @@
+import slugifyString from "slugify";
 import { LocalStorageDeliveryLocationProp } from "../types";
 
 export const getDeliveryLocations = (): LocalStorageDeliveryLocationProp[] => {
@@ -41,4 +42,8 @@ export const formatPrice = (amount: number) => {
   });
 
   return `${CURRENCY_FORMATTER.format(amount)}`;
+};
+
+export const slugify = (value: string) => {
+  return slugifyString(value, { remove: /[*+~.()'"!:@]/g });
 };
