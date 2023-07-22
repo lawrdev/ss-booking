@@ -781,7 +781,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
             }
           }}
         >
-          <Box py={8} px={10}>
+          <Box py={8} px={6}>
             <CustomH3
               headerProps={{
                 mb: 6,
@@ -1028,7 +1028,7 @@ export function BookingForm({ setActiveStep, activeStep }: Props) {
         // @ts-ignore
         modalProps={{ size: "xl" }}
       >
-        <Box py={8} px={10}>
+        <Box py={8} px={6}>
           <CustomH3
             headerProps={{
               mb: 6,
